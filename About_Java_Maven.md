@@ -150,7 +150,7 @@ Deployment to Servers: (Hosting of Java App)
         - vi server.xml
         - Restart the Tomcat server
 
---------------------------------------------------------------
+
 
 Service Management:
   - Ex: Httpd / SSH / nginx / network / firewalld
@@ -185,7 +185,7 @@ Register the Tomcat as Service:
     - sudo systemctl enable tomcat
     - sudo systemctl stop tomcat
 
----------------------------------------------------------
+
 
 Nginx Web Server:
 
@@ -240,7 +240,7 @@ Static Application Hosting on Nginx:
       URL: http://IP:80
 
 Nginx as Reverse Proxy Server:
--------------------------------
+
 
     Go to /etc/nginx/nginx.conf
       in the server block
@@ -277,7 +277,7 @@ Nginx as Reverse Proxy Server:
 
 
 Deploy Dynamic App:
--------------------
+
 
         git clone https://gitlab.com/rns-app/student-app.git
         47  ll
@@ -343,7 +343,7 @@ Setup Maria DB:
           exit;
 
 Integration of AppServer with Mariadb:
----------------------------------------
+
     - netstat -nltp
     - cd ~/student-app/tomcat/conf/
     - cp context.xml /opt/appserver/conf/
