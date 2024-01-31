@@ -1,5 +1,7 @@
 #! /bin/bash
 
+sudo setsebool -P httpd_can_network_connect 1
+
 cd /opt/
 
 #git clone https://gitlab.com/rns-app/student-app.git
@@ -29,7 +31,7 @@ sudo systemctl start tomcat
 
 # Deploying Student App
 
-sudo yum install java-1.8.0-openjdk-devel.x86_64 -y
+#sudo yum install java-1.8.0-openjdk-devel.x86_64 -y
 
 cd /opt/student-app/
 git pull origin main
@@ -41,3 +43,25 @@ mvn clean package
 echo '1' | sudo alternatives --config java
 
 cp /opt/student-app/target/*.war /opt/appserver/webapps/student.war
+
+# Nginx static app deployment
+
+cd /usr/share/nginx/html/
+
+sudo rm -rf *
+
+cd /opt/
+
+# git clone https://gitlab.com/rns-app/static-project.git
+
+cd static-project/iPortfolio/
+
+sudo cp -R /opt/static-project/iPortfolio/* /usr/share/nginx/html/
+
+
+# Reverse Proxy Configuration
+
+sudo cp /opt/student-app/nginx/nginx.conf /etc/nginx/
+
+sudo systemctl stop nginx
+sudo systemctl start nginx
