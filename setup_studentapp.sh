@@ -4,7 +4,7 @@ sudo setsebool -P httpd_can_network_connect 1
 
 cd /opt/student-app
 
-git pull origin main
+git pull origin master
 
 mysql -uroot < /opt/student-app/dbscript/studentapp.sql
 
@@ -36,7 +36,7 @@ cd /opt/student-app/
 
 echo 2 | sudo alternatives --config java
 
-sudo su - devops -c "mvn clean package"
+sudo su - devops -c "cd /opt/student-app && mvn clean package"
 
 echo '1' | sudo alternatives --config java
 
