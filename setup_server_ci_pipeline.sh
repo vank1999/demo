@@ -20,7 +20,7 @@ echo 'devops     ALL=(ALL)      NOPASSWD: ALL' | sudo tee -a /etc/sudoers
 sed -i 's/PasswordAuthentication no/PasswordAuthentication yes/g' /etc/ssh/sshd_config
 sudo service sshd restart
 
-# sudo yum install tree wget zip unzip gzip vim net-tools git bind-utils python2-pip jq -y
+sudo yum install tree wget zip unzip gzip vim net-tools git bind-utils python2-pip jq -y
 
 sudo su - devops -c "git config --global user.name 'devops'"
 sudo su - devops -c "git config --global user.email 'devops@gmail.com'"
