@@ -14,6 +14,7 @@ pipeline {
         stage('compile source code') {
             steps {
                 echo "compile source code"
+                sh 'mvn clean compile'
             }
         }
         stage('pre deployment tests') {
