@@ -3,7 +3,10 @@ pipeline {
     agent {
         label "buildserver"
     }
-  
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "maven3.9.5"
+    }
 
     stages {
         stage('prepare env') {
@@ -13,8 +16,11 @@ pipeline {
             }
         }
         stage('compile source code') {
+         tools {
+                // Install the Maven version configured as "M3" and add it to the path.
+                maven "maven3.9.5"
+    }
             steps {
-                tool name: 'maven3.9.5', type: 'maven'
                 echo "compile source code"
                 sh 'mvn clean compile'
             }
