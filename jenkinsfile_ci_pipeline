@@ -1,0 +1,34 @@
+
+pipeline {
+    agent {
+        label "buildserver"
+    }
+
+    stages {
+        stage('prepare env') {
+            steps {
+                echo "prepare env"
+            }
+        }
+        stage('compile source code') {
+            steps {
+                echo "compile source code"
+            }
+        }
+        stage('pre deployment tests') {
+            steps {
+                echo 'pre deployment tests'
+            }
+        }
+        stage('packaging app') {
+            steps {
+                echo 'packaging app'
+            }
+        }
+        stage('deployment app') {
+            steps {
+                echo 'deployment app'
+            }
+        }
+    }
+}
