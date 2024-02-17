@@ -8,6 +8,7 @@ pipeline {
         stage('prepare env') {
             steps {
                 echo "prepare env"
+                git branch: 'main', url: 'https://gitlab.com/rns-app/student-app.git'
             }
         }
         stage('compile source code') {
