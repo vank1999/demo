@@ -57,6 +57,8 @@ pipeline {
         stage('deployment app') {
             steps {
                 echo 'deployment app'
+                 sh "sudo su devops -c 'sudo chmod +x deploy_application.sh'"
+                 sh "sudo su devops -c 'sudo ./deploy_application.sh'"
             }
         }
     }
