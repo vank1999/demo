@@ -28,7 +28,18 @@ pipeline {
         stage('pre deployment tests') {
             steps {
                 echo 'pre deployment tests'
+                sh 'java -version'
+                sh 'echo 2 | sudo alternatives --config java'
+
+                sh 'mvn clean test'
+
+                sh 'echo 1 | sudo alternatives --config java'
+                sh 'java -version'
             }
+            post{
+                success{
+                junit stdioRetention: '', testResults: 'target/surefire-reports/*.xml'0
+                }    
         }
         stage('packaging app') {
             steps {
