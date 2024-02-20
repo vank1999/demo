@@ -45,6 +45,13 @@ pipeline {
         stage('packaging app') {
             steps {
                 echo 'packaging app'
+
+                sh 'mvn clean package -DskipTest'
+            }
+            post {
+                success{
+                        archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
+                    }
             }
         }
         stage('deployment app') {
