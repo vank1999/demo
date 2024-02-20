@@ -46,7 +46,7 @@ pipeline {
             steps {
                 echo 'packaging app'
 
-                sh 'mvn clean package -DskipTest'
+                sh 'mvn clean package -DskipTests'
             }
             post {
                 success{
@@ -57,8 +57,7 @@ pipeline {
         stage('deployment app') {
             steps {
                 echo 'deployment app'
-                 sh "sudo su devops -c 'sudo chmod +x deploy_application.sh'"
-                 sh "sudo su devops -c 'sudo ./deploy_application.sh'"
+                 sh 'sudo cp target/*.war /opt/appserver/webapps/student.war'
             }
         }
     }
