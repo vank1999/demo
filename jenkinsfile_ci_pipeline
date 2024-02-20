@@ -35,11 +35,7 @@ pipeline {
 
                 sh 'echo 1 | sudo alternatives --config java'
                 sh 'java -version'
-            }
-            post{
-                success{
-                junit stdioRetention: '', testResults: 'target/surefire-reports/*.xml'0
-                }    
+            }   
         }
         stage('packaging app') {
             steps {
