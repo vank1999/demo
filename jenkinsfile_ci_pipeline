@@ -57,7 +57,8 @@ pipeline {
         stage('deployment app') {
             steps {
                 echo 'deployment app'
-                 sh 'sudo cp target/*.war /opt/appserver/webapps/student.war'
+                sh "sudo chmod +x deploy_application.sh"
+                sh "sudo ./deploy_application.sh" 
             }
         }
     }
